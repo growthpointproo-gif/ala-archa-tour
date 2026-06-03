@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ала-Арча Экспресс — комфортные туры в заповедник Ала-Арча из Бишкека. Автобус, входной билет и фуникулёр включены." />
+  <meta name="theme-color" content="#2E7D4F" />
+  <title>Тур в Горы — Ала-Арча Экспресс</title>
+  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M10 80 L40 25 L60 55 L75 35 L95 80 Z' fill='%232E7D4F'/></svg>" />
+</head>
+<body>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ============ TOAST CONTAINER ============ -->
+<div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo-wrap" aria-label="Тур в горы — на главную">
+      <span class="logo-svg" aria-hidden="true">
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoGradHeader" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2a8a3e"/>
+              <stop offset="1" stop-color="#1e6b30"/>
+            </linearGradient>
+          </defs>
+          <!-- Sun -->
+          <circle cx="120" cy="105" r="26" fill="url(#logoGradHeader)" class="logo-sun"/>
+          <g stroke="url(#logoGradHeader)" stroke-width="6" stroke-linecap="round" class="logo-rays">
+            <line x1="120" y1="60" x2="120" y2="40"/>
+            <line x1="80" y1="105" x2="60" y2="105"/>
+            <line x1="92" y1="77" x2="78" y2="63"/>
+            <line x1="92" y1="133" x2="78" y2="147"/>
+          </g>
+          <!-- Bird -->
+          <path d="M380,85 q12,-10 22,0 q10,-10 22,0" stroke="url(#logoGradHeader)" stroke-width="4" fill="none" stroke-linecap="round" class="logo-bird"/>
+          <!-- Mountains -->
+          <path d="M170,265 L290,95 L355,205 L420,145 L475,265 Z" fill="url(#logoGradHeader)"/>
+          <path d="M270,145 L290,105 L310,145 Z" fill="#fff"/>
+          <path d="M395,175 L420,145 L445,175 Z" fill="#fff"/>
+          <path d="M340,185 L355,155 L370,185 Z" fill="#fff"/>
+          <!-- Trees -->
+          <g fill="url(#logoGradHeader)">
+            <path d="M388,275 L405,200 L422,275 Z"/>
+            <path d="M422,275 L432,225 L444,275 Z"/>
+          </g>
+          <!-- Hiker -->
+          <g fill="url(#logoGradHeader)">
+            <ellipse cx="100" cy="195" rx="16" ry="3"/>
+            <circle cx="100" cy="200" r="10"/>
+            <rect x="78" y="208" width="14" height="28" rx="2"/>
+            <path d="M90,212 L112,212 L110,250 L94,250 Z"/>
+            <path d="M94,250 L88,275 L94,275 L100,255 L108,275 L114,275 L106,250 Z"/>
+          </g>
+          <line x1="118" y1="200" x2="130" y2="278" stroke="url(#logoGradHeader)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Ground -->
+          <path d="M50,278 Q260,300 480,275" fill="none" stroke="url(#logoGradHeader)" stroke-width="4" stroke-linecap="round"/>
+          <!-- Text -->
+          <text x="250" y="358" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="50" fill="url(#logoGradHeader)" letter-spacing="3">ТУР В ГОРЫ</text>
+        </svg>
+      </span>
+      <span class="logo-name">Ала-Арча Экспресс</span>
+    </a>
+
+    <nav id="main-nav" aria-label="Основная навигация">
+      <button onclick="goTo('how-it-works')">Как это работает</button>
+      <button onclick="goTo('whats-included')">Что входит</button>
+      <button onclick="goTo('schedule')">Расписание</button>
+      <button onclick="goTo('gallery')">Галерея</button>
+      <button onclick="goTo('reviews')">Отзывы</button>
+      <button onclick="goTo('pricing')">Цена</button>
+      <button onclick="goTo('contact')">Контакты</button>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <div class="auth-area" id="auth-area">
+        <button class="btn-link" onclick="openAuthModal('login')">Войти</button>
+        <button class="btn-link" onclick="openAuthModal('register')">Регистрация</button>
+      </div>
+
+      <div class="user-area hidden" id="user-area">
+        <button class="user-chip" id="user-chip" onclick="toggleUserMenu()" aria-haspopup="true" aria-expanded="false">
+          <span class="user-avatar" id="user-avatar">A</span>
+          <span class="user-name" id="user-name">Пользователь</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="user-menu" id="user-menu" role="menu">
+          <button onclick="openProfile()" role="menuitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Мой профиль
+          </button>
+          <button id="admin-menu-item" class="hidden" onclick="openAdmin()" role="menuitem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Админ-панель
+          </button>
+          <button onclick="logout()" role="menuitem" class="menu-danger">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Выйти
+          </button>
+        </div>
+      </div>
+
+      <button class="btn-book" onclick="goTo('pricing')">Забронировать</button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Меню" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-mountains" aria-hidden="true">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path class="m-far" d="M0,260 L180,140 L320,210 L480,90 L640,200 L780,130 L960,210 L1120,80 L1280,200 L1440,140 L1440,320 L0,320 Z"/>
+      <path class="m-mid" d="M0,280 L160,200 L320,250 L500,180 L660,260 L820,180 L990,260 L1160,200 L1320,260 L1440,220 L1440,320 L0,320 Z"/>
+      <path class="m-near" d="M0,300 L150,250 L320,290 L490,250 L660,295 L820,250 L990,290 L1160,250 L1320,290 L1440,260 L1440,320 L0,320 Z"/>
+    </svg>
+  </div>
+  <div class="hero-content fade-up">
+    <span class="hero-badge">✨ Тур №1 в Ала-Арчу из Бишкека</span>
+    <h1>В заповедник Ала-Арча<br/><span class="grad-text">с комфортом и без очередей</span></h1>
+    <p>Прямой экспресс-автобус от ТРЦ Ала-Арча. Вход, проезд и фуникулёр — всё в одном билете.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="goTo('pricing')">
+        Забронировать место
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <button class="btn-outline" onclick="goTo('how-it-works')">Как это работает</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="num" data-count="19">0</div><div class="label">сидячих мест</div></div>
+      <div class="stat-card"><div class="num"><span data-count="3">0</span> дня</div><div class="label">в неделю</div></div>
+      <div class="stat-card"><div class="num"><span data-count="1500">0</span>+</div><div class="label">довольных гостей</div></div>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARE ============ -->
+<section class="section" id="why-us">
+  <div class="container">
+    <h2 class="section-title fade-up">Почему с нами удобнее</h2>
+    <p class="section-sub fade-up">Сравните обычную поездку и поездку с нами</p>
+    <div class="compare-grid">
+      <div class="compare-card bad fade-up">
+        <h3><span class="ic-bad">✕</span> Обычная поездка</h3>
+        <ul>
+          <li><span class="ic-bad">✕</span> Долго ловить маршрутку или такси</li>
+          <li><span class="ic-bad">✕</span> Стоять в очереди за билетом</li>
+          <li><span class="ic-bad">✕</span> Доплачивать за фуникулёр</li>
+          <li><span class="ic-bad">✕</span> Никто не подскажет, где что</li>
+        </ul>
+      </div>
+      <div class="compare-card good fade-up">
+        <h3><span class="ic-good">✓</span> С Ала-Арча Экспресс</h3>
+        <ul>
+          <li><span class="ic-good">✓</span> Гарантированное место в автобусе</li>
+          <li><span class="ic-good">✓</span> Без очередей — всё включено</li>
+          <li><span class="ic-good">✓</span> Фуникулёр в стоимости</li>
+          <li><span class="ic-good">✓</span> Координатор поможет на месте</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section section-bg" id="how-it-works">
+  <div class="container">
+    <h2 class="section-title fade-up">Как это работает</h2>
+    <p class="section-sub fade-up">Простой процесс от бронирования до возвращения</p>
+    <div class="steps">
+      <div class="step-item fade-up">
+        <div class="step-circle">1</div>
+        <div class="step-card">
+          <h3>Бронируешь место</h3>
+          <p>Заранее онлайн через форму или личный кабинет</p>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-circle">2</div>
+        <div class="step-card">
+          <h3>Приходишь к ТРЦ «Ала-Арча»</h3>
+          <p>В назначенное время, за 10 минут до отправления</p>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-circle">3</div>
+        <div class="step-card">
+          <h3>Садишься в автобус</h3>
+          <p>Гарантированное сидячее место только для тебя</p>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-circle">4</div>
+        <div class="step-card">
+          <h3>Едешь до центра заповедника</h3>
+          <p>Без очередей и пересадок, наслаждаешься видами</p>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-circle">5</div>
+        <div class="step-card">
+          <h3>Гуляешь и катаешься на фуникулёре</h3>
+          <p>Всё по твоему бейджу, доплачивать не нужно</p>
+        </div>
+      </div>
+      <div class="step-item fade-up">
+        <div class="step-circle">6</div>
+        <div class="step-card">
+          <h3>Возвращаешься обратно</h3>
+          <p>На том же автобусе к ТРЦ в назначенное время</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INCLUDED ============ -->
+<section class="section" id="whats-included">
+  <div class="container">
+    <h2 class="section-title fade-up">Что входит в билет</h2>
+    <p class="section-sub fade-up">Всё включено — никаких доплат и сюрпризов</p>
+    <div class="included-grid">
+      <div class="included-card fade-up">
+        <div class="icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Проезд на комфортном автобусе</h3>
+        <p>Туда и обратно, гарантированное сидячее место</p>
+      </div>
+      <div class="included-card fade-up">
+        <div class="icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+        </div>
+        <h3>Входной билет в заповедник</h3>
+        <p>200 сом — уже включено, не нужно стоять в очереди</p>
+      </div>
+      <div class="included-card fade-up">
+        <div class="icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10H22M7 3v4M17 3v4"/><rect x="2" y="6" width="20" height="14" rx="2"/></svg>
+        </div>
+        <h3>Билет на фуникулёр</h3>
+        <p>600 сом — катайся без ограничений</p>
+      </div>
+      <div class="included-card fade-up">
+        <div class="icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Сопровождающий координатор</h3>
+        <p>Поможет, проведёт инструктаж, следит за таймингом</p>
+      </div>
+      <div class="included-card fade-up">
+        <div class="icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Помощь с организацией</h3>
+        <p>От посадки до возвращения — мы всё организуем</p>
+      </div>
+      <div class="included-card fade-up">
+        <div class="icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Чёткий тайминг</h3>
+        <p>Точное расписание, автобус не ждёт опоздавших</p>
+      </div>
+    </div>
+    <div class="included-note fade-up">
+      <strong>По отдельности это дороже и хлопотнее.</strong> С нами — всё в одном билете, один раз оплатил и наслаждаешься.
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section class="section section-bg" id="schedule">
+  <div class="container">
+    <h2 class="section-title fade-up">Расписание</h2>
+    <p class="section-sub fade-up">Мы работаем три дня в неделю — пятница, суббота, воскресенье</p>
+    <div class="days-grid fade-up">
+      <div class="day-card"><div class="day-abbr">ПТ</div><div class="day-full">Пятница</div></div>
+      <div class="day-card"><div class="day-abbr">СБ</div><div class="day-full">Суббота</div></div>
+      <div class="day-card"><div class="day-abbr">ВС</div><div class="day-full">Воскресенье</div></div>
+    </div>
+    <div class="times-grid fade-up">
+      <div class="time-card morning">
+        <div class="time-header">
+          <div class="time-emoji am">☀️</div>
+          <h3>Утренняя смена</h3>
+        </div>
+        <div class="time-range">10:00 – 15:00</div>
+        <p>Отправление в 10:00, возвращение в 15:00</p>
+      </div>
+      <div class="time-card evening">
+        <div class="time-header">
+          <div class="time-emoji pm">🌅</div>
+          <h3>Вечерняя смена</h3>
+        </div>
+        <div class="time-range">16:00 – 21:00</div>
+        <p>Отправление в 16:00, возвращение в 21:00</p>
+      </div>
+    </div>
+    <div class="schedule-warning fade-up">
+      ⚠️ Автобус не ждёт опоздавших — приходите за 10 минут до отправления
+    </div>
+  </div>
+</section>
+
+<!-- ============ COORDINATOR ============ -->
+<section class="section">
+  <div class="container">
+    <div class="coordinator-card fade-up">
+      <div class="coord-header">
+        <div class="coord-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h2>С вами едет координатор</h2>
+      </div>
+      <p>С каждой группой путешествует сопровождающий, который:</p>
+      <ul class="coord-list">
+        <li><span class="ic-good">✓</span> Встречает у автобуса и проверяет бронь</li>
+        <li><span class="ic-good">✓</span> Проводит краткий инструктаж</li>
+        <li><span class="ic-good">✓</span> Подсказывает маршруты и места для фото</li>
+        <li><span class="ic-good">✓</span> Следит за таймингом и сборами</li>
+        <li><span class="ic-good">✓</span> Помогает с любыми вопросами на месте</li>
+      </ul>
+      <p class="coord-note">Вам не нужно беспокоиться о деталях — о вас позаботятся с момента посадки до возвращения.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section section-bg" id="gallery">
+  <div class="container">
+    <h2 class="section-title fade-up">Галерея</h2>
+    <p class="section-sub fade-up">Что вас ждёт в Ала-Арче</p>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-up" onclick="openLightbox(0)" data-img="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80"><div class="gallery-overlay"><span>Снежные вершины</span></div></div>
+      <div class="gallery-item fade-up" onclick="openLightbox(1)" data-img="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80"><div class="gallery-overlay"><span>Горные хребты</span></div></div>
+      <div class="gallery-item fade-up" onclick="openLightbox(2)" data-img="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=1200&q=80"><div class="gallery-overlay"><span>Альпийские луга</span></div></div>
+      <div class="gallery-item fade-up" onclick="openLightbox(3)" data-img="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1200&q=80"><div class="gallery-overlay"><span>Чистые озёра</span></div></div>
+      <div class="gallery-item fade-up" onclick="openLightbox(4)" data-img="https://images.unsplash.com/photo-1551632811-561732d1e306?w=1200&q=80"><div class="gallery-overlay"><span>Лесные тропы</span></div></div>
+      <div class="gallery-item fade-up" onclick="openLightbox(5)" data-img="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=1200&q=80"><div class="gallery-overlay"><span>Кристальный воздух</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING / BOOKING ============ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <h2 class="section-title fade-up">Забронировать место</h2>
+    <p class="section-sub fade-up">Заполните форму — заявка придёт нашему координатору, он свяжется с вами</p>
+    <div class="form-wrap fade-up">
+      <div class="price-block">
+        <div class="price-label">Стоимость билета</div>
+        <div class="price-amount"><span id="price-per-person">2000</span> сом</div>
+        <div class="price-per">за человека</div>
+        <div class="price-total" id="price-total">Итого: 2000 сом</div>
+        <div class="seat-avail" id="seat-avail">
+          <div class="seat-avail-bar"><span id="seat-avail-fill"></span></div>
+          <div class="seat-avail-text" id="seat-avail-text">Выберите дату и смену</div>
+        </div>
+      </div>
+
+      <div class="success-block" id="success-block" hidden>
+        <svg class="success-icon" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 16 9"/></svg>
+        <h3>Заявка отправлена!</h3>
+        <p>Номер вашей брони: <strong id="booking-id-show">—</strong></p>
+        <p class="success-sub">Координатор свяжется с вами в ближайшее время.</p>
+        <button class="btn-submit success-wa" onclick="resendLastWhatsApp()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.05c-.24.68-1.42 1.31-1.96 1.36-.5.05-.99.24-3.32-.71-2.81-1.14-4.6-4.02-4.74-4.21-.14-.19-1.13-1.5-1.13-2.86 0-1.36.71-2.03.96-2.3.25-.27.55-.34.73-.34.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.56.81 1.94.88 2.08.07.14.12.3.02.49-.1.19-.15.3-.29.46-.14.16-.3.36-.43.48-.14.14-.29.29-.12.57.17.28.74 1.22 1.59 1.98 1.1.97 2.02 1.28 2.3 1.42.28.14.45.12.61-.07.16-.19.7-.81.89-1.09.19-.28.37-.23.62-.14.25.09 1.61.76 1.89.9.28.14.46.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+          Продублировать в WhatsApp
+        </button>
+        <button class="btn-outline" onclick="resetForm()">Новая бронь</button>
+      </div>
+
+      <form id="booking-form" novalidate>
+        <div class="form-group">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" required placeholder="Иван Иванов" autocomplete="name" />
+          <span class="field-error" data-for="name"></span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон (WhatsApp)</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+996 XXX XXX XXX" autocomplete="tel" />
+          <span class="field-error" data-for="phone"></span>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Желаемая дата</label>
+            <input type="date" id="date" name="date" required />
+            <span class="field-error" data-for="date"></span>
+          </div>
+          <div class="form-group">
+            <label for="seats">Количество мест</label>
+            <select id="seats" name="seats">
+              <option value="1">1 место</option>
+              <option value="2">2 места</option>
+              <option value="3">3 места</option>
+              <option value="4">4 места</option>
+              <option value="5">5 мест</option>
+              <option value="6">6 мест</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="time">Смена</label>
+            <select id="time" name="time">
+              <option value="morning">☀️ Утро (10:00 – 15:00)</option>
+              <option value="evening">🌅 Вечер (16:00 – 21:00)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comment">Комментарий (необязательно)</label>
+            <input type="text" id="comment" name="comment" placeholder="Особые пожелания" />
+          </div>
+        </div>
+        <button type="submit" class="btn-submit" id="submit-btn">
+          <span class="btn-text">Отправить заявку</span>
+          <span class="btn-spinner" hidden></span>
+        </button>
+        <p class="form-note">Мест всего 19 — бронируйте заранее! Данные передаются в наш Telegram моментально.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section section-bg" id="reviews">
+  <div class="container">
+    <h2 class="section-title fade-up">Отзывы гостей</h2>
+    <p class="section-sub fade-up">Что говорят те, кто уже съездил</p>
+    <div class="reviews-grid" id="reviews-grid"></div>
+    <div class="review-add-wrap fade-up">
+      <button class="btn-outline" id="add-review-btn" onclick="openReviewModal()">Оставить отзыв</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <h2 class="section-title fade-up">Частые вопросы</h2>
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Что если я опоздаю?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Автобус не ждёт опоздавших и отправляется строго по расписанию. Рекомендуем приходить за 10 минут до отправления.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Нужно ли доплачивать за вход или фуникулёр?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Нет! Всё уже включено в стоимость: проезд туда-обратно, входной билет в заповедник (200 сом) и билет на фуникулёр (600 сом).</div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Можно ли с детьми?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Да, конечно! Дети любого возраста приветствуются. Для детей действует та же стоимость билета.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Как происходит оплата?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">После отправки заявки координатор свяжется с вами и объяснит способы оплаты — наличными при посадке или переводом.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Что взять с собой?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Удобную обувь для прогулок, тёплую одежду (в горах прохладнее), воду, перекус. Бейдж для фуникулёра выдаст координатор.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span>Можно ли отменить бронь?</span>
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Да, отмена бесплатно не позднее, чем за 24 часа до отправления. Из личного кабинета — одной кнопкой.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="120" cy="105" r="26" fill="#fff"/>
+            <g stroke="#fff" stroke-width="6" stroke-linecap="round">
+              <line x1="120" y1="60" x2="120" y2="40"/>
+              <line x1="80" y1="105" x2="60" y2="105"/>
+              <line x1="92" y1="77" x2="78" y2="63"/>
+              <line x1="92" y1="133" x2="78" y2="147"/>
+            </g>
+            <path d="M380,85 q12,-10 22,0 q10,-10 22,0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M170,265 L290,95 L355,205 L420,145 L475,265 Z" fill="#fff"/>
+            <g fill="#fff">
+              <path d="M388,275 L405,200 L422,275 Z"/>
+              <path d="M422,275 L432,225 L444,275 Z"/>
+              <ellipse cx="100" cy="195" rx="16" ry="3"/>
+              <circle cx="100" cy="200" r="10"/>
+              <rect x="78" y="208" width="14" height="28" rx="2"/>
+              <path d="M90,212 L112,212 L110,250 L94,250 Z"/>
+              <path d="M94,250 L88,275 L94,275 L100,255 L108,275 L114,275 L106,250 Z"/>
+            </g>
+            <text x="250" y="358" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="50" fill="#fff" letter-spacing="3">ТУР В ГОРЫ</text>
+          </svg>
+        </div>
+        <h3>Ала-Арча Экспресс</h3>
+        <p>Комфортные поездки в заповедник Ала-Арча</p>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+996555015405">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.7 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.13.95.4 1.88.81 2.74a2 2 0 0 1-.45 2.11L7.45 9.18a16 16 0 0 0 7.37 7.37l1.31-1.31a2 2 0 0 1 2.11-.45c.86.41 1.79.68 2.74.81A2 2 0 0 1 22 16.92z"/></svg>
+          +996 555 015 405
+        </a>
+        <a href="https://wa.me/996555015405" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://t.me/alaarcha_express" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Telegram
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Организатор</h4>
+        <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg> ИП Куванычбеков Айбек</p>
+        <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> г. Бишкек</p>
+        <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg> info@ala-archa-express.kg</p>
+      </div>
+      <div class="footer-col">
+        <h4>Меню</h4>
+        <a href="#how-it-works">Как это работает</a>
+        <a href="#whats-included">Что входит</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">Вопросы</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <button class="btn-book" onclick="goTo('pricing')">Забронировать место</button>
+      <p class="footer-copy">© <span id="year">2026</span> Ала-Арча Экспресс. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ AUTH MODAL ============ -->
+<div class="modal" id="auth-modal" hidden role="dialog" aria-labelledby="auth-title" aria-modal="true">
+  <div class="modal-overlay" onclick="closeModal('auth-modal')"></div>
+  <div class="modal-content modal-sm">
+    <button class="modal-close" onclick="closeModal('auth-modal')" aria-label="Закрыть">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="login" onclick="switchAuthTab('login')">Вход</button>
+      <button class="tab-btn" data-tab="register" onclick="switchAuthTab('register')">Регистрация</button>
+    </div>
+    <div id="tab-login" class="tab-panel">
+      <h3 id="auth-title">С возвращением!</h3>
+      <p class="modal-sub">Войдите, чтобы видеть свои бронирования</p>
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="login-email">E-mail или логин</label>
+          <input type="text" id="login-email" required autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Пароль</label>
+          <input type="password" id="login-password" required autocomplete="current-password" />
+        </div>
+        <button class="btn-submit" type="submit">Войти</button>
+      </form>
+      <p class="auth-hint">Админ: <code>admin</code> / <code>Aibek_2248</code></p>
+    </div>
+    <div id="tab-register" class="tab-panel hidden">
+      <h3>Создать аккаунт</h3>
+      <p class="modal-sub">Регистрация займёт меньше минуты</p>
+      <form id="register-form" novalidate>
+        <div class="form-group">
+          <label for="reg-name">Имя</label>
+          <input type="text" id="reg-name" required />
+        </div>
+        <div class="form-group">
+          <label for="reg-email">E-mail</label>
+          <input type="email" id="reg-email" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="reg-phone">Телефон</label>
+          <input type="tel" id="reg-phone" placeholder="+996 XXX XXX XXX" autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Пароль (мин. 6 символов)</label>
+          <input type="password" id="reg-password" required minlength="6" autocomplete="new-password" />
+        </div>
+        <button class="btn-submit" type="submit">Зарегистрироваться</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROFILE MODAL ============ -->
+<div class="modal" id="profile-modal" hidden role="dialog" aria-labelledby="profile-title" aria-modal="true">
+  <div class="modal-overlay" onclick="closeModal('profile-modal')"></div>
+  <div class="modal-content modal-md">
+    <button class="modal-close" onclick="closeModal('profile-modal')" aria-label="Закрыть">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 id="profile-title">Личный кабинет</h3>
+    <div class="profile-header">
+      <div class="profile-avatar" id="profile-avatar">A</div>
+      <div>
+        <div class="profile-name" id="profile-name">—</div>
+        <div class="profile-email" id="profile-email">—</div>
+      </div>
+    </div>
+    <div class="profile-stats">
+      <div class="profile-stat"><span class="num" id="profile-total">0</span><span class="label">всего поездок</span></div>
+      <div class="profile-stat"><span class="num" id="profile-upcoming">0</span><span class="label">предстоящих</span></div>
+      <div class="profile-stat"><span class="num" id="profile-done">0</span><span class="label">завершённых</span></div>
+    </div>
+    <h4 class="modal-section-title">Мои бронирования</h4>
+    <div class="bookings-list" id="my-bookings"></div>
+  </div>
+</div>
+
+<!-- ============ ADMIN MODAL ============ -->
+<div class="modal" id="admin-modal" hidden role="dialog" aria-labelledby="admin-title" aria-modal="true">
+  <div class="modal-overlay" onclick="closeModal('admin-modal')"></div>
+  <div class="modal-content modal-lg">
+    <button class="modal-close" onclick="closeModal('admin-modal')" aria-label="Закрыть">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 id="admin-title">Админ-панель</h3>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="adm-bookings" onclick="switchAdminTab('adm-bookings')">Заявки</button>
+      <button class="tab-btn" data-tab="adm-stats" onclick="switchAdminTab('adm-stats')">Статистика</button>
+      <button class="tab-btn" data-tab="adm-users" onclick="switchAdminTab('adm-users')">Пользователи</button>
+      <button class="tab-btn" data-tab="adm-settings" onclick="switchAdminTab('adm-settings')">Telegram</button>
+    </div>
+    <div id="adm-bookings" class="tab-panel">
+      <div class="admin-toolbar">
+        <input type="text" id="admin-search" placeholder="Поиск по имени или телефону..." />
+        <select id="admin-filter">
+          <option value="all">Все статусы</option>
+          <option value="pending">Ожидает</option>
+          <option value="confirmed">Подтверждено</option>
+          <option value="cancelled">Отменено</option>
+          <option value="completed">Завершено</option>
+        </select>
+        <button class="btn-outline btn-sm" onclick="exportCsv()">📥 Экспорт CSV</button>
+      </div>
+      <div class="admin-bookings" id="admin-bookings"></div>
+    </div>
+    <div id="adm-stats" class="tab-panel hidden">
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-num" id="st-total">0</div><div class="stat-lab">Всего заявок</div></div>
+        <div class="stat-box"><div class="stat-num" id="st-pending">0</div><div class="stat-lab">Ожидают</div></div>
+        <div class="stat-box"><div class="stat-num" id="st-confirmed">0</div><div class="stat-lab">Подтверждены</div></div>
+        <div class="stat-box"><div class="stat-num" id="st-revenue">0</div><div class="stat-lab">Доход (сом)</div></div>
+      </div>
+      <h4 class="modal-section-title">Заявки по дням</h4>
+      <div class="chart-wrap"><div class="bars" id="chart-bars"></div></div>
+    </div>
+    <div id="adm-users" class="tab-panel hidden">
+      <div class="admin-users" id="admin-users"></div>
+    </div>
+    <div id="adm-settings" class="tab-panel hidden">
+      <p class="modal-sub">Введите данные вашего Telegram-бота — заявки будут отправляться сюда автоматически.</p>
+      <div class="form-group">
+        <label for="tg-token">Bot Token</label>
+        <input type="text" id="tg-token" placeholder="123456:ABC-DEF..." />
+        <span class="hint">Получите у <a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a> командой /newbot</span>
+      </div>
+      <div class="form-group">
+        <label for="tg-chat">Chat ID</label>
+        <input type="text" id="tg-chat" placeholder="-1001234567890 или ваш ID" />
+        <span class="hint">Получите у <a href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a></span>
+      </div>
+      <div class="form-group">
+        <label for="tg-price">Цена за человека (сом)</label>
+        <input type="number" id="tg-price" placeholder="2000" min="0" />
+      </div>
+      <div class="tg-actions">
+        <button class="btn-submit" onclick="saveTelegramSettings()">Сохранить</button>
+        <button class="btn-outline" onclick="testTelegram()">📨 Тест отправки</button>
+      </div>
+      <div id="tg-status" class="tg-status"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ REVIEW MODAL ============ -->
+<div class="modal" id="review-modal" hidden role="dialog" aria-modal="true">
+  <div class="modal-overlay" onclick="closeModal('review-modal')"></div>
+  <div class="modal-content modal-sm">
+    <button class="modal-close" onclick="closeModal('review-modal')" aria-label="Закрыть">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3>Оставить отзыв</h3>
+    <form id="review-form" novalidate>
+      <div class="form-group">
+        <label for="rev-name">Имя</label>
+        <input type="text" id="rev-name" required />
+      </div>
+      <div class="form-group">
+        <label>Оценка</label>
+        <div class="rating-input" id="rating-input">
+          <button type="button" data-rate="1">★</button>
+          <button type="button" data-rate="2">★</button>
+          <button type="button" data-rate="3">★</button>
+          <button type="button" data-rate="4">★</button>
+          <button type="button" data-rate="5">★</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rev-text">Ваш отзыв</label>
+        <textarea id="rev-text" rows="4" required></textarea>
+      </div>
+      <button class="btn-submit" type="submit">Опубликовать</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" hidden onclick="closeLightbox(event)">
+  <button class="lightbox-close" aria-label="Закрыть">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox-prev" onclick="lightboxStep(-1, event)" aria-label="Предыдущее">‹</button>
+  <img class="lightbox-img" id="lightbox-img" alt="" />
+  <button class="lightbox-next" onclick="lightboxStep(1, event)" aria-label="Следующее">›</button>
+</div>
+
+<button class="btn-fab" id="btn-fab" onclick="goTo('pricing')" aria-label="Забронировать" hidden>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <span>Забронировать</span>
+</button>
+
+<script src="script.js?v=4"></script>
+</body>
+</html>
