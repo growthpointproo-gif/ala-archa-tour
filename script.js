@@ -35,9 +35,10 @@ const ADMIN_PASSWORD = 'Aibek_2248';
    Заявка открывается у клиента в WhatsApp уже заполненной. */
 const BUSINESS_WHATSAPP = '996555015405';
 
-/* Безопасный Telegram через Cloudflare Worker (токен хранится на сервере,
-   а НЕ в коде сайта). Сюда сайт шлёт заявки, воркер пересылает в Telegram
-   для ВСЕХ посетителей. Заполняется после деплоя воркера. Если пусто —
+/* Безопасный Telegram через серверный «посредник» (Google Apps Script или
+   Cloudflare Worker). Токен хранится на сервере, а НЕ в коде сайта.
+   Сюда сайт шлёт заявки — посредник пересылает их в Telegram для ВСЕХ
+   посетителей. Вставьте сюда URL после развёртывания. Если пусто —
    Telegram для посетителей выключен, заявки идут в WhatsApp. */
 const TELEGRAM_PROXY_URL = '';
 
@@ -629,18 +630,22 @@ function resetForm() {
   recalcPrice();
 }
 
-/* Безопасная отправка в Telegram через Cloudflare Worker.
-   Токен на стороне сервера — работает для всех посетителей. */
+/* Безопасная отправка в Telegram через серверный посредник.
+   Токен на стороне сервера — работает для всех посетителей.
+   Google Apps Script не отдаёт CORS-заголовки, поэтому шлём в режиме
+   no-cors с типом text/plain (тело — JSON-строка). Ответ при этом
+   «непрозрачный» — если запрос ушёл без сетевой ошибки, считаем успехом
+   (заявка также сохраняется локально, а WhatsApp остаётся как резерв). */
 async function sendBookingViaProxy(b) {
   if (!TELEGRAM_PROXY_URL) return false;
   try {
-    const res = await fetch(TELEGRAM_PROXY_URL, {
+    await fetch(TELEGRAM_PROXY_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(b)
     });
-    const data = await res.json().catch(() => ({}));
-    return res.ok && data.ok;
+    return true;
   } catch (err) {
     console.warn('Proxy send failed', err);
     return false;
