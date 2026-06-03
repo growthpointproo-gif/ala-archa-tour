@@ -40,7 +40,7 @@ const BUSINESS_WHATSAPP = '996555015405';
    Сюда сайт шлёт заявки — посредник пересылает их в Telegram для ВСЕХ
    посетителей. Вставьте сюда URL после развёртывания. Если пусто —
    Telegram для посетителей выключен, заявки идут в WhatsApp. */
-const TELEGRAM_PROXY_URL = '';
+const TELEGRAM_PROXY_URL = 'https://script.google.com/macros/s/AKfycbzFI8kEcPODEugKqKfyxxzANanZrUoniv-ib-BV3_jE4NWf2n0Ngj6AG9a6uZDHMtU/exec';
 
 /* Всего мест на одну смену (автобус) */
 const SEATS_TOTAL = 19;
